@@ -6,9 +6,10 @@ const uuidv4 = require('uuid').v4;
 
 env.config();
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  host: "localhost",
+  user: 'root',
+  port: '3307',
+  password: 'root',
   database: 'cumsdbms',
 });
 db.connect((err) => {
@@ -16,6 +17,7 @@ db.connect((err) => {
     throw err;
   }
   console.log('Mysql Connected');
+  reset();
 });
 // Database query promises
 const zeroParamPromise = (sql) => {
@@ -6415,6 +6417,7 @@ const staffData = [
 ];
 
 const reset = async () => {
+  console.log('started')
   try {
     await new Promise((r) => setTimeout(r, 2000)); // wait for mysql connection
     await zeroParamPromise('SET FOREIGN_KEY_CHECKS = 0');
@@ -6542,9 +6545,11 @@ const reset = async () => {
     }
     console.log('Classes Added');
   } catch (err) {
+    console.log(err)
     throw err;
   } finally {
+    console.log('completed')
     process.exit();
   }
 };
-reset();
+

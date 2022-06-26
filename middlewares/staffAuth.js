@@ -2,11 +2,12 @@ const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  dateStrings: 'date',
+  host: "localhost",
+  user: 'newuser',
+  port: '3307',
+  password: 'newuser',
   database: 'cumsdbms',
+  dateStrings: 'date',
 });
 
 const selectID = (id) => {

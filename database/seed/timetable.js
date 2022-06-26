@@ -1,10 +1,12 @@
 const mysql = require('mysql');
 const env = require('dotenv');
 env.config();
+env.config();
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
+  host: "localhost",
+  user: 'root',
+  port: '3307',
+  password: 'root',
   database: 'cumsdbms',
 });
 db.connect((err) => {
@@ -12,6 +14,7 @@ db.connect((err) => {
     throw err;
   }
   console.log('Mysql Connected');
+  generateTimeTable();
 });
 // Database query promises
 const zeroParamPromise = (sql) => {
@@ -89,4 +92,4 @@ async function generateTimeTable() {
     process.exit();
   }
 }
-generateTimeTable();
+// generateTimeTable();

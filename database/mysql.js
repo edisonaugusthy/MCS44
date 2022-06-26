@@ -4,14 +4,16 @@ module.exports = class Mysql {
   static connect() {
     // establish connection
     const db = mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
+      host: "localhost",
+      user: 'newuser',
+      port: '3307',
+      password: 'newuser',
       database: 'cumsdbms',
     });
     // connect to database
     db.connect((err) => {
       if (err) {
+        console.log(err)
         throw err;
       }
       console.log('Mysql Connected');
