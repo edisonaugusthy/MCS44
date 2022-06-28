@@ -5,15 +5,8 @@ const uuidv4 = require('uuid').v4;
 const mailgun = require('mailgun-js');
 const DOMAIN = process.env.DOMAIN_NAME;
 const mg = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: DOMAIN });
-
-const db = mysql.createConnection({
-  host: "localhost",
-  user: 'newuser',
-  port: '3307',
-  password: 'newuser',
-  dateStrings: 'date',
-  database: 'cumsdbms',
-});
+const sql = require('../database/mysql');
+const db = sql.getInstance();
 
 // Students limit per section
 const SECTION_LIMIT = 20;
@@ -759,9 +752,10 @@ exports.getClassSettings = async (req, res, next) => {
 
 exports.postClassSettings = async (req, res, next) => {
   const { staff, course, section, classId } = req.body;
+  const st_id = staff.trim();
   const sql =
     'UPDATE class SET st_id = ?, c_id = ?, section = ? WHERE class_id = ?';
-  await queryParamPromise(sql, [staff, course, section, classId]);
+  await queryParamPromise(sql, [st_id, course, section, classId]);
   req.flash('success_msg', 'Class changed successfully!');
   res.redirect('/admin/getClass');
 };

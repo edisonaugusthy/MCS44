@@ -6,14 +6,8 @@ const mailgun = require('mailgun-js');
 const DOMAIN = process.env.DOMAIN_NAME;
 const mg = mailgun({ apiKey: process.env.MAILGUN_API_KEY, domain: DOMAIN });
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: 'newuser',
-  port: '3307',
-  password: 'newuser',
-  dateStrings: 'date',
-  database: 'cumsdbms',
-});
+const sql = require('../database/mysql');
+const db = sql.getInstance();
 
 // Database query promises
 const zeroParamPromise = (sql) => {

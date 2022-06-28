@@ -1,14 +1,8 @@
 const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
 
-const db = mysql.createConnection({
-  host: "localhost",
-  user: 'newuser',
-  port: '3307',
-  password: 'newuser',
-  database: 'cumsdbms',
-  dateStrings: 'date',
-});
+const sql = require('../database/mysql');
+const db = sql.getInstance();
 
 const selectID = (id) => {
   return new Promise((resolve, reject) => {
