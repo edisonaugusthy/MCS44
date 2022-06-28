@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS NSIT</title>
+    <title>CMS IGNOU</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
@@ -66,8 +66,8 @@
                                                                             <%= staffEmail.email %>
                                                                         </option>
                                                                         <% for(const staff of staffData) { %>
-                                                                            <option class="<% if(staffEmail.email === staff.email) { %> 
-                                                                                hidden 
+                                                                            <option class="<% if(staffEmail.email === staff.email) { %>
+                                                                                hidden
                                                                                 <% } %>" value="<%= staff.st_id %>">
                                                                                 <%= staff.email %>
                                                                             </option>
@@ -88,9 +88,8 @@
                                                                             <%= classData[0].c_id %>
                                                                         </option>
                                                                         <% for(const course of courseData) { %>
-                                                                            <option
-                                                                                class="<% if(classData[0].c_id === course.c_id) { %> 
-                                                                                    hidden 
+                                                                            <option class="<% if(classData[0].c_id === course.c_id) { %>
+                                                                                    hidden
                                                                                     <% } %>">
                                                                                 <%= course.c_id %>
                                                                             </option>
